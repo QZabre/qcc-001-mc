@@ -29,3 +29,8 @@ class TemperatureSensor():
     def temperature(self):
         """Gets current temperature in C."""
         return self._driver.temperature
+
+
+    def is_in_range(self, min_temperature, max_temperature):
+        """Gets flag indicating whether temperature is within acceptable operating range."""
+        return min_temperature < self.temperature < max_temperature
