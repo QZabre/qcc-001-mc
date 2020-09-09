@@ -6,3 +6,5 @@ from qz.commands.do_render_splash import execute as do_render_splash
 from qz.commands.query_idn import execute as query_idn
 from qz.commands.query_switch import execute as query_switch
 from qz.commands.query_temperature import execute as query_temperature
+
+

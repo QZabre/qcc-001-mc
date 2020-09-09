@@ -3,10 +3,13 @@ import digitalio
 
 
 # Constant: switch on representation.
-_ON = 1
+_STATE_ON = 1
 
 # Constant: switch off representation.
-_OFF = 0
+_STATE_OFF = 0
+
+# Set: valid states.
+_STATES = {_STATE_ON, _STATE_OFF}
 
 
 class Switch():
@@ -23,26 +26,59 @@ class Switch():
         self.key = key
         self._driver = digitalio.DigitalInOut(pin)
         self._driver.direction = digitalio.Direction.OUTPUT
-        self._driver.value = False
 
 
     @property
     def value(self):
+        """Returns current switch state."""
         return self._driver.value
+
 
     @property
     def is_on(self):
-        return self.value == _ON
+        """Returns true if switch state -> 1."""
+        return self.value == _STATE_ON
+
 
     @property
     def is_off(self):
-        return self.value == _OFF
+        """Returns true if switch state -> 0."""
+        return self.value == _STATE_OFF
+
 
     def set_value(self, value):
+        """Sets switch value to either on or off.
+        
+        """
+        # Parse value.
+        try:
+            value = int(value)
+        except ValueError:
+            pass
+
+        # Validate value.
+        if value not in _STATES:
+            raise ValueError(f"Invalid switch value: {value}")
+
         self._driver.value = value
 
+
     def switch_off(self):
-        self.set_value(0)
+        """Sets switch state -> 0.
+        
+        """
+        self.set_value(_STATE_ON)
+
 
     def switch_on(self):
-        self.set_value(1)
+        """Sets switch state -> 1.
+        
+        """
+        self.set_value(_STATE_OFF)
+
+
+    def toggle(self):
+        """Toggles switch state.
+        
+        """
+        self.set_value(_STATE_OFF if self.is_on else _STATE_ON)

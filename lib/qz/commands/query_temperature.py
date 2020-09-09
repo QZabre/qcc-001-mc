@@ -6,4 +6,4 @@ def execute():
     """Command execution entry point.
     
     """
-    return devices.amp_temperature_sensor.temperature
+    print(devices.temperature_sensor.temperature)

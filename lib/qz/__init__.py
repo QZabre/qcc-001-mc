@@ -1,3 +1,4 @@
+from qz import commands
 from qz import devices
 
 

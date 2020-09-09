@@ -61,7 +61,7 @@ def _get_command(data):
         return commands.query_temperature
 
     if _is_control_switch(data):
-        return lambda: commands.do_control_switch(data[10:13])
+        return lambda: commands.do_control_switch(data[10:13], data[13])
 
     raise Exception(f"Serial Port command unsupported: {data}")
 

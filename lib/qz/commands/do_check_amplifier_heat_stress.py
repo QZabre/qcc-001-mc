@@ -16,7 +16,16 @@ _TEMPERATURE_MAX = 45.0
 
 # Threshold after which related device(s) temperature is considered unsafe and 
 # instrument protected action needs to be taken.   
-_TEMPERATURE_MIN = -20.0
+_TEMPERATURE_MAX_WARNING = 40.0
+
+# Threshold after which related device(s) temperature is considered unsafe and 
+# instrument protected action needs to be taken.   
+_TEMPERATURE_MIN = -25.0
+
+# Threshold after which related device(s) temperature is considered unsafe and 
+# instrument protected action needs to be taken.   
+_TEMPERATURE_MIN_WARNING = -20.0
+
 
 @utils.execute_on_interval(_INTERVAL_SECONDS)
 def execute():
@@ -27,10 +36,31 @@ def execute():
     if devices.amp_switch.is_off:
         return
 
-    # Escape if within acceptable operating temperature range.    
-    if devices.amp_temperature_sensor.is_in_range(_TEMPERATURE_MIN, _TEMPERATURE_MAX):
-        return
+    # Process amplifier temperature:    
+    # ... temperature is in critical state
+    if not devices.amp_temperature_sensor.is_in_range(_TEMPERATURE_MIN, _TEMPERATURE_MAX):
+        _on_critical()
 
+    # ... temperature is in warning state
+    elif not devices.amp_temperature_sensor.is_in_range(_TEMPERATURE_MIN_WARNING, _TEMPERATURE_MAX_WARNING):
+        _on_warning()
+    
+
+def _on_warning():
+    """Event handler: executed when temperature range is within warning range.
+    
+    """
+    # Emit log event.
+    utils.logger.log_warning("AMP operational temperature safety threshold almost exceeded")
+
+    # Re-render display.
+    commands.do_render_switches()
+
+
+def _on_critical():
+    """Event handler: executed when temperature range is outside of critical range.
+    
+    """
     # Emit log event.
     utils.logger.log_warning("AMP operational temperature safety threshold exceeded")
 
