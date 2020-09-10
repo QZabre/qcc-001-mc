@@ -6,4 +6,4 @@ def execute():
     """Command execution entry point.
     
     """
-    print(constants.IDENTIFIER)
+    print(constants.INSTRUMENT_IDENTIFIER)

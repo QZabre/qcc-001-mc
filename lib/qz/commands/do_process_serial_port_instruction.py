@@ -75,13 +75,8 @@ def execute():
     if not supervisor.runtime.serial_bytes_available:
         return
 
-    # Set instruction to be processed.
+    # Map instruction to command & execute.
     instruction = input().strip()
-
-    # Escape if instruction is null or terminate.
-    if instruction in ["", "\n", "\r"]:
-        return
-
-    # Map instruction to a supported command & execute.
-    command = _get_command(instruction)
-    command()
+    if instruction not in ["", "\n", "\r"]:
+        command = _get_command(instruction)
+        command()

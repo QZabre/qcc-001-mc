@@ -1,4 +1,5 @@
-from qz import devices
+from qz import constants
+from qz import drivers
 
 
 
@@ -6,4 +7,5 @@ def execute():
     """Renders splash screen.
     
     """
-    devices.display.set_splash()
+    display = drivers.get_display("MAIN")
+    display.set_image(constants.IMG_SPLASH)

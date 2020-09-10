@@ -1,19 +1,11 @@
 import digitalio
 
+from qz import constants
 
-
-# Constant: switch on representation.
-_STATE_ON = 1
-
-# Constant: switch off representation.
-_STATE_OFF = 0
-
-# Set: valid states.
-_STATES = {_STATE_ON, _STATE_OFF}
 
 
 class Switch():
-    """Wraps a digital I/O device embedded upon a circuit board.
+    """Wraps a digital I/O driver.
 
     """
     def __init__(self, key, pin):
@@ -37,13 +29,13 @@ class Switch():
     @property
     def is_on(self):
         """Returns true if switch state -> 1."""
-        return self.value == _STATE_ON
+        return self.value == constants.SWITCH_STATE_ON
 
 
     @property
     def is_off(self):
         """Returns true if switch state -> 0."""
-        return self.value == _STATE_OFF
+        return self.value == constants.SWITCH_STATE_OFF
 
 
     def set_value(self, value):
@@ -57,7 +49,7 @@ class Switch():
             pass
 
         # Validate value.
-        if value not in _STATES:
+        if value not in constants.SWITCH_STATES:
             raise ValueError(f"Invalid switch value: {value}")
 
         self._driver.value = value
@@ -67,18 +59,18 @@ class Switch():
         """Sets switch state -> 0.
         
         """
-        self.set_value(_STATE_ON)
+        self.set_value(constants.SWITCH_STATE_ON)
 
 
     def switch_on(self):
         """Sets switch state -> 1.
         
         """
-        self.set_value(_STATE_OFF)
+        self.set_value(constants.SWITCH_STATE_OFF)
 
 
     def toggle(self):
         """Toggles switch state.
         
         """
-        self.set_value(_STATE_OFF if self.is_on else _STATE_ON)
+        self.set_value(constants.SWITCH_STATE_OFF if self.is_on else constants.SWITCH_STATE_ON)

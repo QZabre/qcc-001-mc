@@ -2,22 +2,22 @@ import supervisor
 import time
 
 import qz
-from qz import utils
+
 
 
 def setup():
     """Controller setup.
     
     """
-    # Initialise instrument.
-    qz.init()
+    # Initialise drivers.
+    qz.drivers.init()
 
     # Display logo.
     qz.commands.do_render_splash()
     time.sleep(0.5)
 
-    # Display initial switch state.
-    qz.commands.do_render_switches()
+    # Display initial state.
+    qz.commands.do_render()
 
 
 def loop():
@@ -34,4 +34,4 @@ while True:
     try:
         loop()
     except Exception as err:
-        utils.logger.log_error(err)
+        qz.utils.logger.log_error(err)

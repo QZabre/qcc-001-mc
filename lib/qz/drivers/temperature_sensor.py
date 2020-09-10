@@ -1,29 +1,32 @@
 import board
-
+import busio
 import adafruit_adt7410
 
+from qz import constants
 
 
-# Temperature sensor states.
-_STATE_OK = 0
-_STATE_WARNING = 1
-_STATE_CRITICAL = 9
+
+# I2C Bus - drives temperature sensors.
+_i2c_bus = busio.I2C(board.SCL, board.SDA)
 
 
 class TemperatureSensor():
-    """Wraps a adafruit_adt7410 thermal sensor device embedded upon a circuit board.
+    """Wraps a adafruit_adt7410 thermal sensor driver.
 
     """
-    def __init__(self, i2c_bus, address):
+    def __init__(self, key, address, temperature_range=None):
         """Constructor.
         
-        :param i2c_bus: I2C bus.
+        :param key: Device key used for disambiguation purposes.
         :param address: I2C bus address.
+        :param temperature_range: Operational temperature range.
 
         """
-        self._driver = adafruit_adt7410.ADT7410(i2c_bus, address=address)
+        self.key = key
+        self.state = None
+        self.temperature_range = temperature_range
+        self._driver = adafruit_adt7410.ADT7410(_i2c_bus, address=address)
         self._driver.high_resolution = True
-        self.state = _STATE_OK
 
 
     @property
