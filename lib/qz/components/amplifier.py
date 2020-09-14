@@ -52,6 +52,18 @@ class Amplifier():
         return self.switch.is_on
 
     
+    @property
+    def is_overheated(self):
+        """Returns true if temperature is critical."""
+        return self.temperature_sensor.is_critical
+
+    
+    @property
+    def is_overheating(self):
+        """Returns true if temperature is warning."""
+        return self.temperature_sensor.is_warning
+
+
     def switch_off(self):
         """Switches amplifier off - invoked when temperature sensor is in critical state.
         
