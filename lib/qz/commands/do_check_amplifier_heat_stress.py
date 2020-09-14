@@ -50,7 +50,7 @@ def _on_warning(amplifer):
     utils.logger.log_warning("AMP operational temperature safety threshold almost exceeded")
 
     # Re-render display.
-    commands.do_render()
+    commands.do_render_status()
 
 
 def _on_critical(amplifer):
@@ -62,4 +62,4 @@ def _on_critical(amplifer):
 
     # Switch off amplifier & re-render display.
     INSTRUMENT.amplifer.switch.switch_off()
-    commands.do_render()
+    commands.do_render_status()

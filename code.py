@@ -8,7 +8,7 @@ def setup():
     """
     qz.INSTRUMENT.init()
     qz.commands.do_render_splash()
-    qz.commands.do_render()
+    qz.commands.do_render_status()
 
 
 def loop():
