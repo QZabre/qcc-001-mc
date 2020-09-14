@@ -1,4 +1,4 @@
-from qz import constants
+from qz import INSTRUMENT
 
 
 
@@ -6,4 +6,4 @@ def execute():
     """Command execution entry point.
     
     """
-    print(constants.INSTRUMENT_IDENTIFIER)
+    print(INSTRUMENT.metadata.identifier)

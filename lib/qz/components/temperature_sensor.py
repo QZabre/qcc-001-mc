@@ -34,6 +34,23 @@ class TemperatureSensor():
         """Gets current temperature in C."""
         return self._driver.temperature
 
+    
+    @property
+    def is_critical(self):
+        if self.temperature_range is None:
+            return False
+        return False
+
+    @property
+    def is_ok(self):
+        return False
+
+    @property
+    def is_warning(self):
+        if self.temperature_range is None:
+            return False
+        return True
+
 
     def is_in_range(self, min_temperature, max_temperature):
         """Gets flag indicating whether temperature is within acceptable operating range."""

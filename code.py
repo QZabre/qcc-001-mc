@@ -1,6 +1,3 @@
-import supervisor
-import time
-
 import qz
 
 
@@ -9,19 +6,13 @@ def setup():
     """Controller setup.
     
     """
-    # Initialise drivers.
-    qz.drivers.init()
-
-    # Display logo.
+    qz.INSTRUMENT.init()
     qz.commands.do_render_splash()
-    time.sleep(0.5)
-
-    # Display initial state.
     qz.commands.do_render()
 
 
 def loop():
-    """Executed each time controller event loop fires.
+    """Controller event loop.
     
     """
     qz.commands.do_check_amplifier_heat_stress()

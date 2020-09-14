@@ -1,4 +1,4 @@
-from qz import drivers
+from qz import INSTRUMENT
 
 
 
@@ -6,6 +6,4 @@ def execute():
     """Command execution entry point.
     
     """
-    sensor = drivers.get_temperature_sensor("APD")
-
-    print(sensor.temperature)
+    print(INSTRUMENT.temperature_sensor.temperature)
