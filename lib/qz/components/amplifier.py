@@ -1,8 +1,7 @@
 import board 
 
 from qz import constants
-from qz.components import Switch
-from qz.components import TemperatureSensor
+from qz import components
 
 
 
@@ -20,6 +19,12 @@ _AMPLIFIER_STATE = {
     }
 }
 
+# Operational temperature range.
+_TEMPERATURE_RANGE = (
+    (-25.0, 45.0),
+    (-20.0, 40.0),
+)
+
 
 class Amplifier():
     """Instrument voltage amplifier.
@@ -29,12 +34,8 @@ class Amplifier():
         """Instance constructor.
         
         """
-        self.key = "AMP"
-        self.switch = Switch(constants.SWITCH_AMP, board.D13)
-        self.temperature_sensor = TemperatureSensor("AMP", 0x48, (
-            (-25.0, 45.0),
-            (-20.0, 40.0),
-        ))
+        self.switch = components.Switch(constants.SWITCH_AMP, board.D13)
+        self.temperature_sensor = components.TemperatureSensor(0x48, _TEMPERATURE_RANGE)
     
 
     @property

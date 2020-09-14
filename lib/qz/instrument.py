@@ -3,6 +3,18 @@ from qz import components
 
 
 
+class InstrumentMetaData():
+    """Encapsulates instrument metadata.
+    
+    """
+    def __init__(self):
+        """Instance constructor.
+        
+        """
+        self.manafacturer = constants.INSTRUMENT_MANAFACTURER
+        self.identifier = constants.INSTRUMENT_IDENTIFIER
+
+
 class Instrument():
     """Encapsulates the instrument plus associated commands + components.
     
@@ -30,25 +42,18 @@ class Instrument():
         ])
 
 
-    @property
-    def switches(self):
-        """Returns set of associated switches."""
-        return [
-            self.amplifer.switch,
-            self.apd.switch,
-        ]
-
-
     def get_switch(self, key):
         """Returns a switch matched by key.
         
         :param key: Switch key.
 
         """
-        try:
-            return self.switches[key]
-        except KeyError:
-            raise KeyError(f"Invalid switch key: :: {key}")
+        if key = constants.SWITCH_AMP:
+            return self.amplifer.switch
+        if key = constants.SWITCH_APD:
+            return self.apd.switch
+
+        raise KeyError(f"Invalid switch key: :: {key}")
 
 
     def init(self):
@@ -64,13 +69,3 @@ class Instrument():
                 component.init()
 
 
-class InstrumentMetaData():
-    """Encapsulates instrument metadata.
-    
-    """
-    def __init__(self):
-        """Instance constructor.
-        
-        """
-        self.manafacturer = constants.INSTRUMENT_MANAFACTURER
-        self.identifier = constants.INSTRUMENT_IDENTIFIER

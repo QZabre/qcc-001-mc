@@ -14,15 +14,13 @@ class TemperatureSensor():
     """Wraps a adafruit_adt7410 thermal sensor driver.
 
     """
-    def __init__(self, key, address, temperature_range=None):
+    def __init__(self, address, temperature_range=None):
         """Constructor.
         
-        :param key: Device key used for disambiguation purposes.
         :param address: I2C bus address.
         :param temperature_range: Operational temperature range.
 
         """
-        self.key = key
         self.state = None
         self.temperature_range = temperature_range
         self._driver = adafruit_adt7410.ADT7410(_i2c_bus, address=address)

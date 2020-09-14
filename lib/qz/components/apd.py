@@ -1,14 +1,18 @@
+from qz import constants
+from qz import components
+
+
+
 class Apd():
     """Accelerated photon device.
     
     """
-    def __init__(self, switch):
+    def __init__(self):
         """Instance constructor.
         
         """
-        self.key = "APD"
-        self.switch = switch
-    
+        self.switch = components.Switch(board.D13)
+
 
     @property
     def status(self):

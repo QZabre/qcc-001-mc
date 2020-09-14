@@ -20,13 +20,10 @@ class Display():
     """Wraps a TFT display driver.
 
     """
-    def __init__(self, key):
+    def __init__(self):
         """Constructor.
         
-        :param key: Device key used for disambiguation purposes.
-
         """
-        self.key = key
         self._driver = None
 
 

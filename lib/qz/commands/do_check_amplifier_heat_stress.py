@@ -40,7 +40,7 @@ def execute():
     # ... temperature is in warning state
     elif not INSTRUMENT.amplifer.temperature_sensor.is_in_range(_TEMPERATURE_MIN_WARNING, _TEMPERATURE_MAX_WARNING):
         _on_warning()
-    
+
 
 def _on_warning(amplifer):
     """Event handler: executed when temperature range is within warning range.

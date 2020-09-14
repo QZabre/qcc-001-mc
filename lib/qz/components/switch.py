@@ -8,14 +8,12 @@ class Switch():
     """Wraps a digital I/O driver.
 
     """
-    def __init__(self, key, pin):
+    def __init__(self, pin):
         """Constructor.
         
-        :param key: Device key used for disambiguation purposes.
         :param pin: Pin upon circuit board to which switch is bound.
 
         """
-        self.key = key
         self._driver = digitalio.DigitalInOut(pin)
         self._driver.direction = digitalio.Direction.OUTPUT
 
