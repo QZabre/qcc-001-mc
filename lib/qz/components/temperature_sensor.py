@@ -2,8 +2,6 @@ import board
 import busio
 import adafruit_adt7410
 
-from qz import constants
-
 
 
 # I2C Bus - drives temperature sensors.
@@ -14,11 +12,11 @@ class TemperatureSensor():
     """Wraps a adafruit_adt7410 thermal sensor driver.
 
     """
-    def __init__(self, address, temperature_range=None):
+    def __init__(self, address, temperature_range):
         """Constructor.
         
         :param address: I2C bus address.
-        :param temperature_range: Operational temperature range.
+        :param temperature_range: 4 member tuple: min, min_warning, max_warning, max.
 
         """
         self.state = None
@@ -33,31 +31,28 @@ class TemperatureSensor():
         return self._driver.temperature
 
     
-    @property
-    def is_critical(self):
-        if self.temperature_range is None:
-            return False
-        return False
-
-    @property
-    def is_ok(self):
-        return False
-
-    @property
-    def is_warning(self):
-        if self.temperature_range is None:
-            return False
-        return True
-
-
-    def is_in_range(self, min_temperature, max_temperature):
-        """Gets flag indicating whether temperature is within acceptable operating range."""
-        return min_temperature < self.temperature < max_temperature
-
-
-    def set_state_if_outside_of_range(self, min_temperature, max_temperature, new_state):
-        """If the temperature range is exceed then update sensor state.
+    def is_overheated(self):
+        """Returns true if operating temperature exceeds safety range.
         
         """
-        if not self.is_in_range(min_temperature, max_temperature):
-            self.state = new_state
+        if self.temperature_range is None:
+            return False
+        min_temp, _, _, max_temp = self.temperature_range
+        
+        return min_temp > self.temperature > max_temp
+
+
+    def is_overheating(self):
+        if self.temperature_range is None:
+            return False
+
+        _, min_temp, max_temp, _ = self.temperature_range
+
+        return min_temp > self.temperature > max_temp
+
+
+    def is_ok(self):
+        """Returns true if operating temperature is within safety range.
+        
+        """
+        return not self.is_overheated() and not self.is_warning()

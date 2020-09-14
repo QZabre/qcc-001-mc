@@ -20,10 +20,7 @@ _AMPLIFIER_STATE = {
 }
 
 # Operational temperature range.
-_TEMPERATURE_RANGE = (
-    (-25.0, 45.0),
-    (-20.0, 40.0),
-)
+_TEMPERATURE_RANGE = (-25.0, -20.0, 40.0, 45.0)
 
 
 class Amplifier():
@@ -55,13 +52,13 @@ class Amplifier():
     @property
     def is_overheated(self):
         """Returns true if temperature is critical."""
-        return self.temperature_sensor.is_critical
+        return self.temperature_sensor.is_overheated()
 
     
     @property
     def is_overheating(self):
         """Returns true if temperature is warning."""
-        return self.temperature_sensor.is_warning
+        return self.temperature_sensor.is_overheating()
 
 
     def switch_off(self):
