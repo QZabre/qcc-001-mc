@@ -1,4 +1,4 @@
-from qz import INSTRUMENT
+from qz.instrument import INSTRUMENT
 from qz import commands
 from qz import utils
 

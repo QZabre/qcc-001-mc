@@ -69,3 +69,5 @@ class Instrument():
                 component.init()
 
 
+# Singleton.
+INSTRUMENT = Instrument()

@@ -1,7 +1,7 @@
 import time
 
-from qz import INSTRUMENT
 from qz import constants
+from qz.instrument import INSTRUMENT
 
 
 
