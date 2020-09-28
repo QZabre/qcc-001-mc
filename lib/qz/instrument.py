@@ -27,7 +27,7 @@ class Instrument():
         self.apd = components.Apd()
         self.display = components.Display()
         self.metadata = InstrumentMetaData()
-        self.temperature_sensor = components.TemperatureSensor("MAIN", 0x49, None)
+        self.temperature_sensor = components.TemperatureSensor(0x49, None)
 
 
     def __iter__(self):
@@ -48,9 +48,9 @@ class Instrument():
         :param key: Switch key.
 
         """
-        if key = constants.SWITCH_AMP:
+        if key == constants.SWITCH_AMP:
             return self.amplifer.switch
-        if key = constants.SWITCH_APD:
+        if key == constants.SWITCH_APD:
             return self.apd.switch
 
         raise KeyError(f"Invalid switch key: :: {key}")

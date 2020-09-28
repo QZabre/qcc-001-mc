@@ -19,6 +19,11 @@ class Switch():
 
 
     @property
+    def status(self):
+        """Returns current switch status."""
+        return self._driver.value
+
+    @property
     def value(self):
         """Returns current switch state."""
         return self._driver.value

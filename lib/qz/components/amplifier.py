@@ -27,11 +27,11 @@ class Amplifier():
     """Instrument voltage amplifier.
     
     """
-    def __init__(self, switch, temperature_sensor):
+    def __init__(self):
         """Instance constructor.
         
         """
-        self.switch = components.Switch(constants.SWITCH_AMP, board.D13)
+        self.switch = components.Switch(board.D13)
         self.temperature_sensor = components.TemperatureSensor(0x48, _TEMPERATURE_RANGE)
     
 

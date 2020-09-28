@@ -1,3 +1,5 @@
+from qz import commands
+from qz import utils
 from qz.instrument import INSTRUMENT
 
 
@@ -8,3 +10,4 @@ def execute(key, value):
     """
     switch = INSTRUMENT.get_switch(key)
     switch.set_value(value)
+    commands.do_render_status()

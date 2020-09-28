@@ -2,6 +2,8 @@ import board
 import busio
 import adafruit_adt7410
 
+from qz import constants
+
 
 
 # I2C Bus - drives temperature sensors.
@@ -24,6 +26,13 @@ class TemperatureSensor():
         self._driver = adafruit_adt7410.ADT7410(_i2c_bus, address=address)
         self._driver.high_resolution = True
 
+
+    @property
+    def status(self):
+        """Gets currentstatus."""
+        return constants.TEMPERATURE_STATE_OK if self.is_ok else \
+               constants.TEMPERATURE_STATE_WARNING if self.is_overheating else \
+               constants.TEMPERATURE_STATE_CRITICAL
 
     @property
     def temperature(self):

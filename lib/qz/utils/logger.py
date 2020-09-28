@@ -1,3 +1,4 @@
+from qz.instrument import INSTRUMENT
 from qz.utils.misc import get_datetime_as_iso_8601
 
 
@@ -67,5 +68,5 @@ def _get_formatted_message(msg, level):
 
     """
     return _NULL_MSG if msg is None else \
-           f"{get_datetime_as_iso_8601()} [{level}] :: QZABRE :: {str(msg).strip()}"
+           f"{get_datetime_as_iso_8601()} [{level}] :: {INSTRUMENT.metadata.manafacturer} :: {INSTRUMENT.metadata.identifier} :: {str(msg).strip()}"
 

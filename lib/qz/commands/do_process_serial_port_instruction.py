@@ -75,8 +75,13 @@ def execute():
     if not supervisor.runtime.serial_bytes_available:
         return
 
+    # Decode instruction
+    try:
+        instruction = input().strip()
+    except Exception as err:
+        raise Exception("Serial Port command invalid")
+
     # Map instruction to command & execute.
-    instruction = input().strip()
     if instruction not in ["", "\n", "\r"]:
         command = _get_command(instruction)
         command()

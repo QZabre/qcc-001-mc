@@ -6,4 +6,4 @@ def execute():
     """Command execution entry point.
     
     """
-    print(INSTRUMENT.metadata.identifier)
+    print(f"{INSTRUMENT.metadata.manafacturer} {INSTRUMENT.metadata.identifier}")

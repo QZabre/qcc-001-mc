@@ -1,3 +1,5 @@
+import board
+
 from qz import constants
 from qz import components
 
@@ -11,7 +13,7 @@ class Apd():
         """Instance constructor.
         
         """
-        self.switch = components.Switch(board.D13)
+        self.switch = components.Switch(board.D9)
 
 
     @property

@@ -2,7 +2,7 @@
 IMG_SPLASH = "splash.bmp"
 
 # Instrument identifier.
-INSTRUMENT_IDENTIFIER = "QCC 1"
+INSTRUMENT_IDENTIFIER = "QCC-001"
 
 # Instrument manafacturer.
 INSTRUMENT_MANAFACTURER = "QZabre"
