@@ -6,43 +6,43 @@ from qz.instrument import INSTRUMENT
 
 # Map: from system state to image file.
 _MAP_STATE_IMG = {
-    # Amp on & temp OK. Apd off.
-    "00": "QCC_00.bmp",
+    # Amp off. Amp temp OK. Apd off.
+    "00_0": "QCC-001-00-0.bmp",
 
-    # Amp on & temp OK. Apd on.
-    "01": "QCC_01.bmp",
+    # Amp off. Amp temp warning. Apd off.
+    "01_0": "QCC-001-01-0.bmp",
 
-    # Amp on & temp warning. Apd off.
-    "10": "QCC_10.bmp",
+    # Amp off. Amp temp critical. Apd off.    
+    "02_0": "QCC-001-02-0.bmp",
+    
+    # Amp on. Amp temp OK. Apd off.
+    "10_0": "QCC-001-10-0.bmp",
 
-    # Amp on & temp warning. Apd on.
-    "11": "QCC_11.bmp",
+    # Amp on. Amp temp warning. Apd off.
+    "11_0": "QCC-001-11-0.bmp",
 
-    # # Amp on & temp critical. Apd on.
-    # # Note - should never be in this state.
-    # "20": "_03.bmp",
+    # Amp on. Amp temp critical. Apd off.
+    # Note: should never occur.
+    "12_0": "QCC-001-12-0.bmp",
 
-    # # Amp on & temp critical. Apd off.
-    # # Note - should never be in this state.
-    # "21": "_03.bmp",
+    # Amp off. Amp temp OK. Apd on.
+    "00_1": "QCC-001-00-1.bmp",
 
-    # # Amp off & temp ok. Apd off.
-    # "30": "_04.bmp",
+    # Amp off. Amp temp warning. Apd on.
+    "01_1": "QCC-001-01-1.bmp",
 
-    # # Amp off & temp ok. Apd on.
-    # "31": "_04.bmp",
+    # Amp off. Amp temp critical. Apd on.    
+    "02_1": "QCC-001-02-1.bmp", 
 
-    # Amp off & temp warning. Apd off.
-    "40": "QCC_40.bmp",
+    # Amp on. Amp temp OK. Apd on.
+    "10_1": "QCC-001-10-1.bmp",
 
-    # Amp off & temp warning. Apd on.
-    "41": "QCC_41.bmp",
+    # Amp on. Amp temp warning. Apd on.
+    "11_1": "QCC-001-11-1.bmp",
 
-    # Amp off & temp critical. Apd off.
-    "50": "QCC_50.bmp",
-
-    # Amp off & temp critical. Apd on.
-    "51": "QCC_51.bmp",
+    # Amp on. Amp temp critical. Apd on.
+    # Note: should never occur.
+    "12_1": "QCC-001-12-1.bmp",     
 }
 
 
@@ -51,7 +51,7 @@ def execute():
     
     """
     # Set system state.
-    state = f"{INSTRUMENT.amplifer.status}{INSTRUMENT.apd.status}"
+    state = f"{INSTRUMENT.amplifer.status}_{INSTRUMENT.apd.status}"
     utils.logger.log(f"rendering instrument state: {state}")
 
     # Set image.

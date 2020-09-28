@@ -8,14 +8,14 @@ from qz import components
 # Map: switch state to temeperature state to amplifier.
 _AMPLIFIER_STATE = {
     constants.SWITCH_STATE_ON: {
-        constants.TEMPERATURE_STATE_OK: 0,
-        constants.TEMPERATURE_STATE_WARNING: 1,
-        constants.TEMPERATURE_STATE_CRITICAL: 2,
+        constants.TEMPERATURE_STATE_OK: "10",
+        constants.TEMPERATURE_STATE_WARNING: "11",
+        constants.TEMPERATURE_STATE_CRITICAL: "12",
     },
     constants.SWITCH_STATE_OFF: {
-        constants.TEMPERATURE_STATE_OK: 3,
-        constants.TEMPERATURE_STATE_WARNING: 4,
-        constants.TEMPERATURE_STATE_CRITICAL: 5,
+        constants.TEMPERATURE_STATE_OK: "01",
+        constants.TEMPERATURE_STATE_WARNING: "02",
+        constants.TEMPERATURE_STATE_CRITICAL: "03",
     }
 }
 
