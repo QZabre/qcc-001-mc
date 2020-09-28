@@ -29,6 +29,14 @@ def _is_control_switch(data):
     return _is_switch_instruction(data) and not _is_query_switch(data)
 
 
+def _is_query_amplifier_temperature(data):
+    """Returns true if an amplifier temperature query instruction."""
+    return _is_low_level(data) and \
+           data[0:4] == "MEAS" and \
+           data[5:9] == "TEMP" and \
+           data[10:13] == "AMP"
+
+
 def _is_query_idn(data):
     """Returns true if an idn query instruction."""
     return _is_high_level(data) and data[1:5] == "IDN?"
@@ -52,6 +60,9 @@ def _get_command(data):
     :param instruction: Instrument control instruction.
 
     """
+    if _is_query_amplifier_temperature(data):
+        return commands.query_amplifier_temperature
+
     if _is_query_idn(data):
         return commands.query_idn
 

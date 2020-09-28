@@ -5,7 +5,7 @@ IMG_SPLASH = "splash.bmp"
 INSTRUMENT_IDENTIFIER = "QCC-001"
 
 # Instrument manafacturer.
-INSTRUMENT_MANAFACTURER = "qcc_001_mcabre"
+INSTRUMENT_MANAFACTURER = "QZabre"
 
 # Switch key: AMP.
 SWITCH_AMP = "AMP"

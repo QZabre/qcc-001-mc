@@ -3,6 +3,7 @@ from qcc_001_mc.commands.do_check_amplifier_heat_stress import execute as do_che
 from qcc_001_mc.commands.do_process_serial_port_instruction import execute as do_process_serial_port_instruction
 from qcc_001_mc.commands.do_render_status import execute as do_render_status
 from qcc_001_mc.commands.do_render_splash import execute as do_render_splash
+from qcc_001_mc.commands.query_amplifier_temperature import execute as query_amplifier_temperature
 from qcc_001_mc.commands.query_idn import execute as query_idn
 from qcc_001_mc.commands.query_switch import execute as query_switch
 from qcc_001_mc.commands.query_temperature import execute as query_temperature
