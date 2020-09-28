@@ -35,9 +35,9 @@ def log_error(err):
     """
     msg = '!! RUNTIME ERROR !! :: '
     if issubclass(BaseException, err.__class__):
-        msg += '{} :: {}'.format(err.__class__, err)
+        msg += f"{err.__class__} :: {err}"
     else:
-        msg += '{}'.format(err)
+        msg += f"{err}"
     log(msg, LOG_LEVEL_ERROR)
 
 
@@ -57,9 +57,9 @@ def log_warning(err):
 
     """
     if issubclass(BaseException, err.__class__):
-        msg = '{} :: {}'.format(err.__class__, err)
+        msg += f"{err.__class__} :: {err}"
     else:
-        msg = '{}'.format(err)
+        msg += f"{err}"
     log(msg, LOG_LEVEL_WARNING)
 
 

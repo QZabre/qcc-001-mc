@@ -29,39 +29,44 @@ class TemperatureSensor():
 
     @property
     def status(self):
-        """Gets currentstatus."""
+        """Gets current status."""
         return constants.TEMPERATURE_STATE_OK if self.is_ok else \
                constants.TEMPERATURE_STATE_WARNING if self.is_overheating else \
                constants.TEMPERATURE_STATE_CRITICAL
+
 
     @property
     def temperature(self):
         """Gets current temperature in C."""
         return self._driver.temperature
 
-    
+
+    @property
     def is_overheated(self):
         """Returns true if operating temperature exceeds safety range.
         
         """
         if self.temperature_range is None:
             return False
+
         min_temp, _, _, max_temp = self.temperature_range
-        
-        return min_temp > self.temperature > max_temp
+
+        return self.temperature <= min_temp or self.temperature >= max_temp
 
 
+    @property
     def is_overheating(self):
         if self.temperature_range is None:
             return False
 
         _, min_temp, max_temp, _ = self.temperature_range
 
-        return min_temp > self.temperature > max_temp
+        return self.temperature <= min_temp or self.temperature >= max_temp
 
 
+    @property
     def is_ok(self):
         """Returns true if operating temperature is within safety range.
         
         """
-        return not self.is_overheated() and not self.is_warning()
+        return not self.is_overheated and not self.is_overheating

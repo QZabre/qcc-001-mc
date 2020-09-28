@@ -13,9 +13,9 @@ _AMPLIFIER_STATE = {
         constants.TEMPERATURE_STATE_CRITICAL: "12",
     },
     constants.SWITCH_STATE_OFF: {
-        constants.TEMPERATURE_STATE_OK: "01",
-        constants.TEMPERATURE_STATE_WARNING: "02",
-        constants.TEMPERATURE_STATE_CRITICAL: "03",
+        constants.TEMPERATURE_STATE_OK: "00",
+        constants.TEMPERATURE_STATE_WARNING: "01",
+        constants.TEMPERATURE_STATE_CRITICAL: "02",
     }
 }
 
@@ -52,13 +52,13 @@ class Amplifier():
     @property
     def is_overheated(self):
         """Returns true if temperature is critical."""
-        return self.temperature_sensor.is_overheated()
+        return self.temperature_sensor.is_overheated
 
     
     @property
     def is_overheating(self):
         """Returns true if temperature is warning."""
-        return self.temperature_sensor.is_overheating()
+        return self.temperature_sensor.is_overheating
 
 
     def switch_off(self):
