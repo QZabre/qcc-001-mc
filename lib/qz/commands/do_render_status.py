@@ -21,10 +21,6 @@ _MAP_STATE_IMG = {
     # Amp on. Amp temp warning. Apd off.
     "11_0": "QCC-001-11-0.bmp",
 
-    # Amp on. Amp temp critical. Apd off.
-    # Note: should never occur.
-    "12_0": "QCC-001-12-0.bmp",
-
     # Amp off. Amp temp OK. Apd on.
     "00_1": "QCC-001-00-1.bmp",
 
@@ -38,11 +34,7 @@ _MAP_STATE_IMG = {
     "10_1": "QCC-001-10-1.bmp",
 
     # Amp on. Amp temp warning. Apd on.
-    "11_1": "QCC-001-11-1.bmp",
-
-    # Amp on. Amp temp critical. Apd on.
-    # Note: should never occur.
-    "12_1": "QCC-001-12-1.bmp",     
+    "11_1": "QCC-001-11-1.bmp",    
 }
 
 
