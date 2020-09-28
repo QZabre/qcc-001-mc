@@ -56,7 +56,7 @@ class Display():
 
         # Set bitmap.
         bitmap, palette = adafruit_imageload.load(
-            f"assets/img/{fname}",
+            f"lib/qcc_001_mc/assets/img/{fname}",
             bitmap=displayio.Bitmap,
             palette=displayio.Palette,
             )
