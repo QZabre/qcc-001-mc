@@ -1,2 +1,3 @@
-# qcc-001
-QZabre QCC 001 Micro-controller code
+# qcc-001-mc
+
+QZabre QCC-001 Micro-Controller
