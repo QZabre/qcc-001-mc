@@ -25,6 +25,7 @@ class Instrument():
         """
         self.amplifer = components.Amplifier()
         self.apd = components.Apd()
+        self.cooling = components.Cooling()
         self.display = components.Display()
         self.metadata = InstrumentMetaData()
         self.temperature_sensor = components.TemperatureSensor(0x49, None)
