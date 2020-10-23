@@ -66,3 +66,10 @@ class Amplifier():
         
         """
         self.switch.switch_off()
+
+
+    def switch_on(self):
+        """Switches amplifier on - invoked on startup.
+        
+        """
+        self.switch.switch_on()

@@ -22,6 +22,7 @@ def _loop():
     
     """
     def _on_loop():
+        commands.do_control_cooling_fan()
         commands.do_check_amplifier_heat_stress()
         commands.do_process_serial_port_instruction()   
  

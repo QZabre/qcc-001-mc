@@ -62,14 +62,14 @@ class Switch():
         """Sets switch state -> 0.
         
         """
-        self.set_value(constants.SWITCH_STATE_ON)
+        self.set_value(constants.SWITCH_STATE_OFF)
 
 
     def switch_on(self):
         """Sets switch state -> 1.
         
         """
-        self.set_value(constants.SWITCH_STATE_OFF)
+        self.set_value(constants.SWITCH_STATE_ON)
 
 
     def toggle(self):

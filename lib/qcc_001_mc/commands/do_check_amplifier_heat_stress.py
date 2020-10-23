@@ -18,7 +18,6 @@ def execute():
             _on_is_overheated()
         elif INSTRUMENT.amplifer.is_overheating:
             _on_is_overheating()
-    _set_cooling_output()
 
 
 def _on_is_overheated():
@@ -36,14 +35,3 @@ def _on_is_overheating():
     """
     utils.logger.log_warning("AMP operational temperature safety threshold almost exceeded")
     commands.do_render_status()
-
-
-def _set_cooling_output():
-    """Event handler: executed when temperature range is such that extra cooling is required.
-    
-    """
-    if INSTRUMENT.amplifer.is_on and 
-       INSTRUMENT.amplifer.temperature_sensor.temperature >= 30.0:
-        INSTRUMENT.cooling.set_output(100.0)
-    else:
-        INSTRUMENT.cooling.set_output(50.0)
