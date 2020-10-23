@@ -20,7 +20,7 @@ _AMPLIFIER_STATE = {
 }
 
 # Operational temperature range.
-_TEMPERATURE_RANGE = (-25.0, -20.0, 40.0, 45.0)
+_TEMPERATURE_RANGE = (-25.0, -20.0, 37.0, 45.0)
 
 
 class Amplifier():
