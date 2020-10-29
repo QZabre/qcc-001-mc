@@ -5,8 +5,11 @@ from qcc_001_mc import components
 
 
 
-class CoolingFan():
-    """Cooling fan.
+class Cooling():
+    """Cooling sub-system.
+
+    NOTE: At present this wraps a simple on/off switch that controls both a pump & fan.  
+          However in due course this will mutate to a gradiated control mechanism.
     
     """
     def __init__(self):

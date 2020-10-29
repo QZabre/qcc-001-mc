@@ -1,6 +1,6 @@
 from qcc_001_mc.commands.do_check_amplifier_heat_stress import execute as do_check_amplifier_heat_stress
 from qcc_001_mc.commands.do_control_switch import execute as do_control_switch
-from qcc_001_mc.commands.do_control_cooling_fan import execute as do_control_cooling_fan
+from qcc_001_mc.commands.do_control_cooling import execute as do_control_cooling
 from qcc_001_mc.commands.do_process_serial_port_instruction import execute as do_process_serial_port_instruction
 from qcc_001_mc.commands.do_render_status import execute as do_render_status
 from qcc_001_mc.commands.do_render_splash import execute as do_render_splash

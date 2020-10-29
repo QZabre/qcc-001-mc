@@ -25,7 +25,7 @@ class Instrument():
         """
         self.amplifer = components.Amplifier()
         self.apd = components.Apd()
-        self.cooling_fan = components.CoolingFan()
+        self.cooling = components.Cooling()
         self.display = components.Display()
         self.metadata = InstrumentMetaData()
         self.temperature_sensor = components.TemperatureSensor(0x49, None)
@@ -38,6 +38,7 @@ class Instrument():
         return iter([
             self.amplifer,
             self.apd,
+            self.cooling,
             self.display,
             self.temperature_sensor,
         ])

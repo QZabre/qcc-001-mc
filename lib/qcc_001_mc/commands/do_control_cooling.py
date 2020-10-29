@@ -13,9 +13,8 @@ def execute():
     
     """
     if INSTRUMENT.amplifer.is_on:
-        if INSTRUMENT.cooling_fan.switch.is_off:
-            INSTRUMENT.cooling_fan.switch.switch_on()
+        if INSTRUMENT.cooling.switch.is_off:
+            INSTRUMENT.cooling.switch.switch_on()
     else:
-        if INSTRUMENT.cooling_fan.switch.is_on:
-            INSTRUMENT.cooling_fan.switch.switch_off()
-
+        if INSTRUMENT.cooling.switch.is_on:
+            INSTRUMENT.cooling.switch.switch_off()

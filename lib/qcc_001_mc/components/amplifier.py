@@ -33,7 +33,6 @@ class Amplifier():
         """
         self.switch = components.Switch(board.D13)
         self.temperature_sensor = components.TemperatureSensor(0x48, _TEMPERATURE_RANGE)
-    
 
     @property
     def status(self):
