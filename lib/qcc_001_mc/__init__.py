@@ -29,7 +29,7 @@ def _loop():
     utils.logger.log("micro-controller event loop: begins")
     while True:
         for cmd in (
-            commands.do_check_amplifier_heat_stress,
+            # commands.do_check_amplifier_heat_stress,
             commands.do_process_serial_port_instruction
         ):
             try:
