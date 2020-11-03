@@ -42,6 +42,8 @@ def execute():
     """Renders current state of switches.
     
     """
+    return
+    
     # Set system state.
     state = f"{INSTRUMENT.amplifer.status}_{INSTRUMENT.apd.status}"
 
@@ -53,7 +55,7 @@ def execute():
         utils.logger.log_warning(f"instrument state could not be mapped to an image: {state}")
     
     # Render image.
-    try:
-        INSTRUMENT.display.set_image(img)
-    except:
-        pass
+    # try:
+    #     INSTRUMENT.display.set_image(img)
+    # except:
+    #     pass

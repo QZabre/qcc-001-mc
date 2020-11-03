@@ -26,7 +26,7 @@ class Instrument():
         self.amplifer = components.Amplifier()
         self.apd = components.Apd()
         self.cooling = components.Cooling()
-        self.display = components.Display()
+        # self.display = components.Display()
         self.metadata = InstrumentMetaData()
         self.temperature_sensor = components.TemperatureSensor(0x49, None)
 
@@ -39,7 +39,7 @@ class Instrument():
             self.amplifer,
             self.apd,
             self.cooling,
-            self.display,
+            # self.display,
             self.temperature_sensor,
         ])
 
@@ -52,7 +52,7 @@ class Instrument():
         """
         if key == constants.SWITCH_AMP:
             return self.amplifer.switch
-        if key == constants.SWITCH_APD:
+        elif key == constants.SWITCH_APD:
             return self.apd.switch
 
         raise KeyError(f"Invalid switch key: :: {key}")

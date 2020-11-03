@@ -25,3 +25,10 @@ class Cooling():
         
         """ 
         return 1 if self.switch.is_on else 0
+
+    
+    def switch_on(self):
+        """Sets switch state -> 1.
+        
+        """
+        self.switch.switch_on()
