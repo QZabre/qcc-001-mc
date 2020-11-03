@@ -4,10 +4,11 @@ from qcc_001_mc.instrument import INSTRUMENT
 
 
 
-def execute(key, value):
+def execute(key: str, value: int):
     """Sets value of a switch.
     
     """
     switch = INSTRUMENT.get_switch(key)
-    switch.set_value(value)
-    commands.do_render_status()
+    if value != int(switch.status):
+        switch.set_value(value)
+        commands.do_render_status()

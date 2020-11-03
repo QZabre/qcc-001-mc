@@ -44,7 +44,6 @@ def execute():
     """
     # Set system state.
     state = f"{INSTRUMENT.amplifer.status}_{INSTRUMENT.apd.status}"
-    utils.logger.log(f"rendering instrument state: {state}")
 
     # Set image.
     try:
@@ -54,4 +53,7 @@ def execute():
         utils.logger.log_warning(f"instrument state could not be mapped to an image: {state}")
     
     # Render image.
-    INSTRUMENT.display.set_image(img)
+    try:
+        INSTRUMENT.display.set_image(img)
+    except:
+        pass

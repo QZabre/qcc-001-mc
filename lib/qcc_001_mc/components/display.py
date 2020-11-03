@@ -78,6 +78,7 @@ class Display():
         """Flushes display in readiness for rendering an image.
         
         """
+        # displayio.release_displays()
         # NOTE: this is a hack to get things up and running - it 
         #       will be removed once system if fully functional.
         group = displayio.Group()

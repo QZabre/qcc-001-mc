@@ -18,3 +18,4 @@ def execute():
     else:
         if INSTRUMENT.cooling.switch.is_on:
             INSTRUMENT.cooling.switch.switch_off()
+

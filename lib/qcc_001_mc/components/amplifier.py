@@ -20,7 +20,7 @@ _AMPLIFIER_STATE = {
 }
 
 # Operational temperature range.
-_TEMPERATURE_RANGE = (-25.0, -20.0, 37.0, 45.0)
+_TEMPERATURE_RANGE = (-25.0, -20.0, 35.0, 45.0)
 
 
 class Amplifier():
@@ -33,6 +33,7 @@ class Amplifier():
         """
         self.switch = components.Switch(board.D13)
         self.temperature_sensor = components.TemperatureSensor(0x48, _TEMPERATURE_RANGE)
+    
 
     @property
     def status(self):
