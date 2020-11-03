@@ -1,8 +1,8 @@
+import gc
+
 import board
 import displayio
 import terminalio
-
-import gc
 
 import adafruit_imageload
 import adafruit_st7789
@@ -11,9 +11,8 @@ import adafruit_st7789
 
 # NOTE: this is a hack to get things up and running - it 
 #       will be removed once system if fully functional.
-_bitmap = displayio.Bitmap(240, 240, 1)
-_palette = displayio.Palette(1)
-_palette[0] = 0x000000
+_bitmap = displayio.Bitmap(240, 240, 1)   
+
 
 
 class Display():
@@ -24,6 +23,7 @@ class Display():
         """Constructor.
         
         """
+    
         self._driver = None
 
 
@@ -61,14 +61,16 @@ class Display():
             palette=displayio.Palette,
             )
 
-        # Set tile grid.
-        tile_grid = displayio.TileGrid(bitmap, pixel_shader=palette, x=0, y=0)
+        # Create a TileGrid to hold the bitmap
+        tile_grid = displayio.TileGrid(bitmap, pixel_shader=palette)
 
-        # Set group.
-        group = displayio.Group(max_size=10)
+        # Create a Group to hold the TileGrid
+        group = displayio.Group()
+
+        # Add the TileGrid to the Group
         group.append(tile_grid)
 
-        # Render.
+        # Add the Group to the Display
         self._driver.show(group)
 
 
@@ -76,21 +78,14 @@ class Display():
         """Flushes display in readiness for rendering an image.
         
         """
+        # displayio.release_displays()
         # NOTE: this is a hack to get things up and running - it 
         #       will be removed once system if fully functional.
-
-        def get_background_sprite():
-            color_bitmap = displayio.Bitmap(240, 240, 1)
-            color_palette = displayio.Palette(1)
-            color_palette[0] = 0x000000  # Bright Green
-
-            return displayio.TileGrid(color_bitmap, pixel_shader=color_palette, x=0, y=0)
-
-        def get_group():
-            group = displayio.Group()
-            group.append(get_background_sprite())
-
-            return group
-
-        self._driver.show(get_group())
+        group = displayio.Group()
+        group.append(displayio.TileGrid(
+            displayio.Bitmap(240, 240, 1), 
+            pixel_shader=displayio.Palette(1)
+            ))
+        self._driver.show(group)
+        
         gc.collect()
