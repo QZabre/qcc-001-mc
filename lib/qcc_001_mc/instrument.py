@@ -28,7 +28,11 @@ class Instrument():
         self.cooling = components.Cooling()
         # self.display = components.Display()
         self.metadata = InstrumentMetaData()
-        self.temperature_sensor = components.TemperatureSensor(0x49, None)
+        # self.temperature_sensor = components.TemperatureSensor(0x49, None)
+        self.switch_map = {
+            constants.SWITCH_AMP: self.amplifer.switch,
+            constants.SWITCH_APD: self.apd.switch,
+        }
 
 
     def __iter__(self):
@@ -40,7 +44,7 @@ class Instrument():
             self.apd,
             self.cooling,
             # self.display,
-            self.temperature_sensor,
+            # self.temperature_sensor,
         ])
 
 
@@ -50,12 +54,10 @@ class Instrument():
         :param key: Switch key.
 
         """
-        if key == constants.SWITCH_AMP:
-            return self.amplifer.switch
-        elif key == constants.SWITCH_APD:
-            return self.apd.switch
-
-        raise KeyError(f"Invalid switch key: :: {key}")
+        try:
+            return self.switch_map[key]
+        except KeyError:
+            raise KeyError(f"Invalid switch key: :: {key}")
 
 
     def init(self):

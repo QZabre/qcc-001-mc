@@ -9,6 +9,5 @@ def execute(key: str, value: int):
     
     """
     switch = INSTRUMENT.get_switch(key)
-    if value != int(switch.status):
-        switch.set_value(value)
-        commands.do_render_status()
+    switch.set_value(value)
+    commands.do_render_status()

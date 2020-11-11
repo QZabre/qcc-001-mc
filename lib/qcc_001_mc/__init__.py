@@ -30,7 +30,7 @@ def _loop():
     while True:
         for cmd in (
             # commands.do_check_amplifier_heat_stress,
-            commands.do_process_serial_port_instruction
+            commands.do_process_serial_port_instruction,
         ):
             try:
                 cmd()
